@@ -426,6 +426,15 @@
       s.addEventListener('click',(e)=>{ const rect=s.getBoundingClientRect(); const ratio=(e.clientX-rect.left)/s.clientWidth; c.scrollLeft=ratio*(c.scrollWidth-c.clientWidth); });
     });
   </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll("img").forEach(function(img) {
+      img.setAttribute("loading", "lazy");
+    });
+  });
+</script>
+
 </body>
 </html>
+
 
