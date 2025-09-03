@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Misión y Visión - R & M Inmobiliaria</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      padding-top: 90px;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #ffffff;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .logo {
+      height: 60px;
+      width: auto;
+      max-height: 80px;
+    }
+    .logo1 {
+      height: 110px;
+      width: auto;
+      max-height: 130px;
+    }
+    .ampi-logo {
+      margin-top: 10px;
+      width: 80px;
+    }
+
+    .menu ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .menu ul li a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .menu ul li a:hover {
+      color: #007bff;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    #menu-toggle {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        display: none;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .menu ul {
+        flex-direction: column;
+        padding: 20px 0;
+      }
+
+      #menu-toggle:checked + .hamburger + .menu {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+
+    /* ===== CONTENIDO ===== */
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.4em;
+      color: #2c3e50;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .section h2 {
+      font-size: 1.6em;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+
+    .section p {
+      font-size: 1.05em;
+      line-height: 1.7;
+      color: #555;
+    }
+
+    /* ===== FOOTER (igual que otras páginas) ===== */
+    .footer {
+      background: #1f1f1f;
+      color: #fff;
+      padding: 40px 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .footer-logo-contact,
+    .footer-links,
+    .footer-social {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer h2,
+    .footer h4 {
+      margin-bottom: 10px;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links ul li {
+      margin: 6px 0;
+    }
+
+    .footer-links ul li a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links ul li a:hover {
+      color: #FFD700;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin: 10px 0;
+    }
+
+    .social-icons img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #444;
+      margin-top: 30px;
+      padding-top: 20px;
+      font-size: 0.9em;
+      color: #ccc;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Menú -->
+  <header class="header">
+    <div class="logo"><img src="IMAGES/LogoColor2.jpg" alt="Mi logo" class="logo"></div>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="hamburger">&#9776;</label>
+    <nav class="menu">
+      <ul>
+        <li><a href="Index.html">Inicio</a></li>
+        <li><a href="Catálogo.html">Catálogo</a></li>
+        <li><a href="MisiónVisión.html">Acerca de</a></li>
+        <li><a href="Contactanos.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contenido principal -->
+  <div class="container">
+    <h1>Misión y Visión</h1>
+    
+    <div class="section">
+      <h2>💼 Misión</h2>
+      <p>
+        Nuestra misión es proporcionar soluciones inmobiliarias personalizadas que superen las expectativas de nuestros clientes, fomentando la confianza y la satisfacción a través de un servicio excepcional.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🌟 Visión</h2>
+      <p>
+        Ser líderes en el mercado inmobiliario de la región y ser reconocidos por la excelencia en la atención al cliente, así como por nuestra contribución al desarrollo de comunidades prósperas y sostenibles.
+      </p>
+    </div>
+  </div>
+
+
+  <!-- Footer actualizado igual que las demás páginas -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo-contact">
+        <h2><img src="IMAGES/Logo1PNG.png" alt="Logo 1" class="logo1"></h2>
+        <p><strong>Encuéntranos en</strong></p>
+        <p>📞 9542073313</p>
+        <p>Av. 5 de mayo, Colonia Linda Vista<br>Río Grande, Oax.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Propiedades</h4>
+        <ul>
+          <li><a href="Catálogo1.html#terrenos">Terrenos</a></li>
+          <li><a href="Catálogo1.html#departamentos">Departamentos</a></li>
+          <li><a href="Catálogo1.html#casas">Casas</a></li>
+          <li><a href="Catálogo1.html#oficinas">Oficinas</a></li>
+          <li><a href="Catálogo1.html#locales">Locales</a></li>
+          <li><a href="Catálogo1.html#condominios">Casas en Condominio</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social">
+        <h4>Síguenos</h4>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/1D3nEcScGE/?mibextid=wwXIfr"><img src="IMAGES/FB8.png" alt="Facebook" /></a>
+          <a href="https://www.instagram.com/negocios_inmobiliarios_rm?igsh=cWZvZmlqazAwaXVi&utm_source=qr"><img src="IMAGES/IG3.png" alt="Instagram" /></a>
+          <a href="https://www.tiktok.com/@rm.negocios.inmob?_t=ZS-8zNEIEfUEcr&_r=1"><img src="IMAGES/TT2.png" alt="TikTok" /></a>
+          <a href="https://www.youtube.com/channel/UCiDX-MfzpxyupejX9U5_C4g"><img src="IMAGES/YT4.png" alt="YouTube" /></a>
+        </div>
+        <p>Asociados con:</p>
+        <img src="IMAGES/Logo1.png" alt="AMPI México" class="ampi-logo" />
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 R & M. Todos los derechos reservados.</p>
+      <p>Software Inmobiliario</p>
+    </div>
+  </footer>
+   
+
+  <!-- WhatsApp -->
+<div class="whatsapp-button" onclick="window.open('https://wa.me/529542073313');">
+  <img src="IMAGES/WhatsApp_icon.png" alt="WhatsApp" style="width:30px; height:30px;">
+</div>
+
+<!-- Estilos para la burbuja -->
+<style>
+.whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  border-radius: 50%;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.whatsapp-button:hover {
+  transform: scale(1.1);
+}
+@media (max-width: 768px) {
+  .whatsapp-button {
+    bottom: 10px;
+    right: 10px;
+    padding: 12px;
+  }
+  .whatsapp-button img {
+    width: 25px;
+    height: 25px;
+  }
+}
+</style>
+
+</body>
+</html>

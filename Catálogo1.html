@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categorías de Propiedades</title>
+  <style>
+    :root {
+      --primary-color: #c18e53;
+      --dark: #1e1e1e;
+      --light: #f9f9f9;
+      --gray: #666;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    section {
+      padding: 3rem 2rem;
+      min-height: 100vh;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--dark);
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .logo img {
+      height: 60px;
+      width: auto;
+      max-height: 80px;
+    }
+
+    .menu {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu li a,
+    .cta {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+    }
+
+    .cta {
+      background-color: var(--primary-color);
+      border: none;
+      padding: 0.5rem 1rem;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: var(--dark);
+    }
+
+    /* Carrusel */
+    .carousel-wrapper {
+      position: relative;
+      overflow: hidden;
+      padding: 0 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .carousel {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .card {
+      flex: 0 0 auto;
+      width: 250px;
+      background: #fff;
+      border-radius: 10px;
+      scroll-snap-align: start;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .info {
+      padding: 1rem;
+    }
+
+    .info h4 { margin: 0; font-size: 1rem; }
+    .info p { color: #555; font-size: 0.9rem; margin: 0.5rem 0; }
+    .info .price { font-weight: bold; font-size: 1.1rem; color: #000; }
+
+    .btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid white;
+      color: white;
+      font-size: 2.5rem;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .btn-left { left: 10px; }
+    .btn-right { right: 10px; }
+    .btn:hover { background: rgba(0,0,0,0.8); }
+
+    .custom-scrollbar {
+      height: 6px;
+      background: #ddd;
+      border-radius: 3px;
+      margin: 1rem 2rem 0 2rem;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .custom-thumb {
+      height: 100%;
+      background: #555;
+      border-radius: 3px;
+      width: 40px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    /* Footer */
+    .footer { background: #1f1f1f; color: #fff; padding: 40px 20px; font-family: sans-serif; }
+    .footer-container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; }
+    .footer-logo-contact, .footer-links, .footer-social { flex: 1; min-width: 250px; }
+    .footer h2, .footer h4 { margin-bottom: 10px; }
+    .footer-links ul { list-style: none; padding: 0; }
+    .footer-links ul li { margin: 6px 0; }
+    .footer-links ul li a { color: #fff; text-decoration: none; }
+    .footer-links ul li a:hover { text-decoration: underline; }
+    .social-icons { display: flex; gap: 15px; margin: 10px 0; }
+    .social-icons img { width: 30px; height: 30px; }
+    .ampi-logo { margin-top: 10px; width: 80px; }
+    .footer-bottom { text-align: center; border-top: 1px solid #444; margin-top: 30px; padding-top: 20px; font-size: 0.9em; color: #ccc; }
+.footer h2,
+.footer h4 {
+  margin-bottom: 10px;
+}
+.logo {
+  height: 60px;      /* Ajusta aquí, prueba entre 50px y 80px */
+  width: auto;       /* Mantiene la proporción original */
+  max-height: 80px;  /* Límite máximo */
+}
+.logo1 {
+  height: 110px;      /* Más grande que el anterior */
+  width: auto;       /* Mantiene la proporción */
+  max-height: 130px; /* Límite máximo */
+}
+.whatsapp-bubble {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #25D366;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: transform 0.2s;
+}
+
+.whatsapp-bubble:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp-bubble img {
+  width: 35px;
+  height: 35px;
+}
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .menu {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        background-color: white;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 1rem 2rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        z-index: 10;
+      }
+
+      .menu.active { display: flex; }
+
+      .hamburger { display: flex; }
+
+      .menu li { margin-bottom: 0.8rem; }
+      .menu li:last-child { margin-bottom: 0; }
+      .menu li a, .cta { width: 100%; text-align: left; }
+
+      .card { width: 200px; }
+      .btn { width: 45px; height: 45px; font-size: 2rem; }
+    }
+
+    @media (max-width: 480px) { .card { width: 160px; } }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo"><img src="IMAGES/LogoColor2.jpg" alt="Mi logo"></div>
+    <div class="hamburger" id="hamburger">
+      <div></div><div></div><div></div>
+    </div>
+    <ul class="menu" id="menu">
+      <li><a href="Index.html">Inicio</a></li>
+      <li><a href="Catálogo.html">Cátalogo</a></li>
+      <li><a href="MisiónVisión.html">Acerca de</a></li>
+      <li><a href="Contactanos.html">Contacto</a></li>
+      <li><a href="https://wa.me/529542073313" target="_blank" class="cta">¡Agendar!</a></li>
+    </ul>
+  </nav>
+
+  <!-- Secciones de Carrusel -->
+  <!-- Terrenos -->
+  <section id="terrenos" class="carousel-section">
+    <h2 class="carousel-title">Terrenos</h2>
+    <div class="carousel-wrapper">
+      <div class="carousel" id="terrenosCarousel">
+        <div class="card"><img src="https://via.placeholder.com/250x200?text=Terreno+1" alt="Terreno 1"><div class="info"><h4>Terreno Centro</h4><p>Ubicación: Centro</p><div class="price">$1,200,000</div><button>Ver detalles</button></div></div>
+        <div class="card"><img src="https://via.placeholder.com/250x200?text=Terreno+2" alt="Terreno 2"><div class="info"><h4>Terreno Norte</h4><p>Ubicación: Norte</p><div class="price">$900,000</div><button>Ver detalles</button></div></div>
+        <div class="card"><img src="https://via.placeholder.com/250x200?text=Terreno+3" alt="Terreno 3"><div class="info"><h4>Terreno Sur</h4><p>Ubicación: Sur</p><div class="price">$1,500,000</div><button>Ver detalles</button></div></div>
+      </div>
+      <button class="btn btn-left" onclick="scrollCarousel('terrenosCarousel', -1)">◀</button>
+      <button class="btn btn-right" onclick="scrollCarousel('terrenosCarousel', 1)">▶</button>
+      <div class="custom-scrollbar" id="terrenosScrollbar"><div class="custom-thumb" id="terrenosThumb"></div></div>
+    </div>
+  </section>
+
+  <!-- Departamentos -->
+  <section id="departamentos" class="carousel-section">
+    <h2 class="carousel-title">Departamentos</h2>
+    <div class="carousel-wrapper">
+      <div class="carousel" id="departamentosCarousel">
+        <div class="card"><img src="https://via.placeholder.com/250x200?text=Depa+1" alt="Depa 1"><div class="info"><h4>Depa Moderno</h4><p>Centro</p><div class="price">$2,500,000</div><button>Ver detalles</button></div></div>
+        <div class="card"><img src="https://via.placeholder.com/250x200?text=Depa+2" alt="Depa 2"><div class="info"><h4>Depa Familiar</h4><p>Norte</p><div class="price">$1,800,000</div><button>Ver detalles</button></div></div>
+        <div class="card"><img src="https://via.placeholder.com/250x200?text=Depa+3" alt="Depa 3"><div class="info"><h4>Depa de Lujo</h4><p>Sur</p><div class="price">$3,500,000</div><button>Ver detalles</button></div></div>
+      </div>
+      <button class="btn btn-left" onclick="scrollCarousel('departamentosCarousel', -1)">◀</button>
+      <button class="btn btn-right" onclick="scrollCarousel('departamentosCarousel', 1)">▶</button>
+      <div class="custom-scrollbar" id="departamentosScrollbar"><div class="custom-thumb" id="departamentosThumb"></div></div>
+    </div>
+  </section>
+
+  <!-- Casas -->
+  <section id="casas" class="carousel-section">
+    <h2 class="carousel-title">Casas</h2>
+    <div class="carousel-wrapper">
+      <div class="carousel" id="casasCarousel">
+        <div class="card"><img src="https://via.placeholder.com/250x200?text=Casa+1" alt="Casa 1"><div class="info"><h4>Casa Moderna</h4><p>Centro</p><div class="price">$3,000,000</div><button>Ver detalles</button></div></div>
+        <div class="card"><img src="https://via.placeholder.com/250x200?text=Casa+2" alt="Casa 2"><div class="info"><h4>Casa Familiar</h4><p>Norte</p><div class="price">$2,500,000</div><button>Ver detalles</button></div></div>
+        <div class="card"><img src="https://via.placeholder.com/250x200?text=Casa+3" alt="Casa 3"><div class="info"><h4>Casa de Lujo</h4><p>Sur</p><div class="price">$4,200,000</div><button>Ver detalles</button></div></div>
+      </div>
+      <button class="btn btn-left" onclick="scrollCarousel('casasCarousel', -1)">◀</button>
+      <button class="btn btn-right" onclick="scrollCarousel('casasCarousel', 1)">▶</button>
+      <div class="custom-scrollbar" id="casasScrollbar"><div class="custom-thumb" id="casasThumb"></div></div>
+    </div>
+  </section>
+
+  <!-- Oficinas -->
+  <section id="oficinas" class="carousel-section">
+    <h2 class="carousel-title">Oficinas</h2>
+    <div class="carousel-wrapper">
+      <div class="carousel" id="oficinasCarousel">
+        <div class="card"><img src="https://via.placeholder.com/250x200?text=Oficina+1" alt="Oficina 1"><div class="info"><h4>Oficina Centro</h4><p>Ubicación: Centro</p><div class="price">$1,500,000</div><button>Ver detalles</button></div></div>
+        <div class="card"><img src="https://via.placeholder.com/250x200?text=Oficina+2" alt="Oficina 2"><div class="info"><h4>Oficina Norte</h4><p>Norte</p><div class="price">$1,200,000</div><button>Ver detalles</button></div></div>
+      </div>
+      <button class="btn btn-left" onclick="scrollCarousel('oficinasCarousel', -1)">◀</button>
+      <button class="btn btn-right" onclick="scrollCarousel('oficinasCarousel', 1)">▶</button>
+      <div class="custom-scrollbar" id="oficinasScrollbar"><div class="custom-thumb" id="oficinasThumb"></div></div>
+    </div>
+  </section>
+
+  <!-- Locales -->
+  <section id="locales" class="carousel-section">
+    <h2 class="carousel-title">Locales</h2>
+    <div class="carousel-wrapper">
+      <div class="carousel" id="localesCarousel">
+        <div class="card"><img src="https://via.placeholder.com/250x200?text=Local+1" alt="Local 1"><div class="info"><h4>Local Centro</h4><p>Centro</p><div class="price">$800,000</div><button>Ver detalles</button></div></div>
+        <div class="card"><img src="https://via.placeholder.com/250x200?text=Local+2" alt="Local 2"><div class="info"><h4>Local Norte</h4><p>Norte</p><div class="price">$600,000</div><button>Ver detalles</button></div></div>
+      </div>
+      <button class="btn btn-left" onclick="scrollCarousel('localesCarousel', -1)">◀</button>
+      <button class="btn btn-right" onclick="scrollCarousel('localesCarousel', 1)">▶</button>
+      <div class="custom-scrollbar" id="localesScrollbar"><div class="custom-thumb" id="localesThumb"></div></div>
+    </div>
+  </section>
+
+  <!-- Casas-Condominio -->
+  <section id="condominios" class="carousel-section">
+    <h2 class="carousel-title">Casas-Condominio</h2>
+    <div class="carousel-wrapper">
+      <div class="carousel" id="condominiosCarousel">
+        <div class="card"><img src="https://via.placeholder.com/250x200?text=Condominio+1" alt="Condominio 1"><div class="info"><h4>Condominio Centro</h4><p>Centro</p><div class="price">$2,800,000</div><button>Ver detalles</button></div></div>
+        <div class="card"><img src="https://via.placeholder.com/250x200?text=Condominio+2" alt="Condominio 2"><div class="info"><h4>Condominio Norte</h4><p>Norte</p><div class="price">$2,300,000</div><button>Ver detalles</button></div></div>
+      </div>
+      <button class="btn btn-left" onclick="scrollCarousel('condominiosCarousel', -1)">◀</button>
+      <button class="btn btn-right" onclick="scrollCarousel('condominiosCarousel', 1)">▶</button>
+      <div class="custom-scrollbar" id="condominiosScrollbar"><div class="custom-thumb" id="condominiosThumb"></div></div>
+    </div>
+  </section>
+<!-- Burbuja WhatsApp -->
+<a href="https://wa.me/529542073313" target="_blank" class="whatsapp-bubble">
+  <img src="IMAGES/WhatsApp_icon.png" alt="WhatsApp">
+</a>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo-contact">
+        <h2><img src="IMAGES/Logo1PNG.png" alt="Logo 1" class="logo1"></h2>
+        <p><strong>Contáctanos</strong></p>
+        <p>📞 954 207 3313</p>
+        <p>Av. 5 de mayo, Colonia Linda Vista<br>Río Grande, Oax.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>¿Qué estás buscando?</h4>
+  <ul>
+    <li><a href="#terrenos">Terrenos</a></li>
+    <li><a href="#departamentos">Departamentos</a></li>
+    <li><a href="#casas">Casas</a></li>
+    <li><a href="#oficinas">Oficinas</a></li>
+    <li><a href="#locales">Locales</a></li>
+    <li><a href="#condominios">Casas en Condominio</a></li>
+  </ul>
+      </div>
+
+      <div class="footer-social">
+        <h4>Síguenos</h4>
+        <div class="social-icons">
+          <a href="#"><img src="IMAGES/FB8.png" alt="Facebook"></a>
+          <a href="#"><img src="IMAGES/IG3.png" alt="Instagram"></a>
+          <a href="#"><img src="IMAGES/TT2.png" alt="TikTok"></a>
+          <a href="#"><img src="IMAGES/YT4.png" alt="YouTube"></a>
+        </div>
+        <p>Asociados con:</p>
+        <img src="IMAGES/Logo1.png" alt="AMPI México" class="ampi-logo">
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 R & M. Todos los derechos reservados.</p>
+      <p>Software Inmobiliario</p>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+    hamburger.addEventListener('click', () => menu.classList.toggle('active'));
+
+    // Scroll carousels
+    function scrollCarousel(id, dir){
+      const c = document.getElementById(id);
+      c.scrollBy({ left: dir*300, behavior: "smooth" });
+      setTimeout(() => {
+        const t = document.getElementById(id.replace('Carousel','Thumb'));
+        const s = document.getElementById(id.replace('Carousel','Scrollbar'));
+        const ratio = c.scrollLeft / (c.scrollWidth - c.clientWidth);
+        t.style.left = ratio*(s.clientWidth - t.clientWidth) + 'px';
+      },300);
+    }
+
+    ['terrenos','departamentos','casas','oficinas','locales','condominios'].forEach(id=>{
+      const c = document.getElementById(id+'Carousel');
+      const t = document.getElementById(id+'Thumb');
+      const s = document.getElementById(id+'Scrollbar');
+      c.addEventListener('scroll', ()=>{ const ratio=c.scrollLeft/(c.scrollWidth-c.clientWidth); t.style.left=ratio*(s.clientWidth-t.clientWidth)+'px'; });
+      s.addEventListener('click',(e)=>{ const rect=s.getBoundingClientRect(); const ratio=(e.clientX-rect.left)/s.clientWidth; c.scrollLeft=ratio*(c.scrollWidth-c.clientWidth); });
+    });
+  </script>
+</body>
+</html>

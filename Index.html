@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>R & M</title>
+  <style>
+    :root {
+      --primary-color: #c18e53;
+      --dark: #1e1e1e;
+      --light: #f9f9f9;
+      --gray: #666;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .menu {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu li a,
+    .cta {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+    }
+
+    .cta {
+      background-color: var(--primary-color);
+      border: none;
+      padding: 0.5rem 1rem;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: var(--dark);
+    }
+
+    /* Hero */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover;
+      color: white;
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .search-box {
+      margin-top: 1rem;
+      background-color: white;
+      padding: 1rem;
+      display: inline-flex;
+      border-radius: 8px;
+      flex-wrap: wrap;
+    }
+    .search-box input {
+      border: none;
+      padding: 0.5rem;
+      flex: 1;
+      min-width: 200px;
+    }
+    .search-box button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      margin-top: 0.5rem;
+    }
+
+    section { padding: 3rem 2rem; }
+    h2 { font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--dark); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .menu { flex-direction: column; width: 100%; display: none; background-color: white; position: absolute; top: 100%; left: 0; padding: 1rem 2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 10; }
+      .menu.active { display: flex; }
+      .hamburger { display: flex; }
+      .menu li { margin-bottom: 0.8rem; }
+      .menu li:last-child { margin-bottom: 0; }
+      .menu li a, .cta { width: 100%; text-align: left; }
+      .search-box { flex-direction: column; align-items: stretch; }
+      .search-box button { width: 100%; }
+      .hero h1 { font-size: 2rem; }
+    }
+
+    .logo { height: 60px; width: auto; max-height: 80px; }
+    .logo1 { height: 110px; width: auto; max-height: 130px; }
+
+    /* Footer */
+    .footer { background: #1f1f1f; color: #fff; padding: 40px 20px; font-family: sans-serif; }
+    .footer-container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; }
+    .footer-logo-contact, .footer-links, .footer-social { flex: 1; min-width: 250px; }
+    .footer h2, .footer h4 { margin-bottom: 10px; }
+    .footer-links ul { list-style: none; padding: 0; margin: 0; }
+    .footer-links ul li { margin: 6px 0; }
+    .footer-links ul li a { color: #fff; text-decoration: none; transition: color 0.3s; }
+    .footer-links ul li a:hover { color: #FFD700; }
+    .footer-links ul li a:visited { color: #fff; }
+    .social-icons { display: flex; gap: 15px; margin: 10px 0; }
+    .social-icons img { width: 30px; height: 30px; }
+    .ampi-logo { margin-top: 10px; width: 80px; }
+    .footer-bottom { text-align: center; border-top: 1px solid #444; margin-top: 30px; padding-top: 20px; font-size: 0.9em; color: #ccc; }
+
+    /* Carrusel */
+    .jersey-carousel-section { margin: 2rem 0; }
+    .carousel-title { font-size: 1.8rem; padding-left: 2rem; margin-bottom: 1rem; }
+    .carousel-wrapper { position: relative; overflow: hidden; padding: 0 2rem; }
+    .carousel { display: flex; gap: 1.5rem; overflow-x: auto; scroll-behavior: smooth; scroll-snap-type: x mandatory; }
+    .carousel::-webkit-scrollbar { display: none; }
+    .card { flex: 0 0 auto; width: 250px; background: #fff; border-radius: 10px; scroll-snap-align: start; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); }
+    .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px 10px 0 0; }
+    .info { padding: 1rem; }
+    .info h4 { margin: 0; font-size: 1rem; }
+    .info p { color: #555; font-size: 0.9rem; margin: 0.5rem 0; }
+    .info .price { font-weight: bold; font-size: 1.1rem; color: #000; }
+    .btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); border: 2px solid white; color: white; font-size: 2.5rem; width: 60px; height: 60px; border-radius: 50%; cursor: pointer; pointer-events: all; display: flex; align-items: center; justify-content: center; z-index: 1000; }
+    .btn-left { left: 10px; }
+    .btn-right { right: 10px; }
+    .btn:hover { background: rgba(0,0,0,0.8); }
+    .custom-scrollbar { height: 6px; background: #ddd; border-radius: 3px; margin: 1rem 2rem 0 2rem; position: relative; cursor: pointer; }
+    .custom-thumb { height: 100%; background: #555; border-radius: 3px; width: 40px; position: absolute; left: 0; top: 0; }
+
+    @media (max-width: 768px) {
+      .card { width: 200px; }
+      .card img { height: 160px; }
+      .carousel-title { font-size: 1.5rem; padding-left: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .card { width: 160px; }
+      .card img { height: 130px; }
+      .btn { width: 45px; height: 45px; font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+<!-- WhatsApp -->
+<div class="whatsapp-button" onclick="window.open('https://wa.me/529542073313');">
+  <img src="IMAGES/WhatsApp_icon.png" alt="WhatsApp" style="width:30px; height:30px;">
+</div>
+
+<!-- Estilos para la burbuja -->
+<style>
+.whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  border-radius: 50%;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.whatsapp-button:hover {
+  transform: scale(1.1);
+}
+@media (max-width: 768px) {
+  .whatsapp-button {
+    bottom: 10px;
+    right: 10px;
+    padding: 12px;
+  }
+  .whatsapp-button img {
+    width: 25px;
+    height: 25px;
+  }
+}
+</style>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo"><img src="IMAGES/LogoColor2.jpg" alt="Mi logo" class="logo"></div>
+    <div class="hamburger" id="hamburger"><div></div><div></div><div></div></div>
+    <ul class="menu" id="menu">
+      <li><a href="Index.html">Inicio</a></li>
+      <li><a href="Catálogo.html">Cátalogo</a></li>
+      <li><a href="MisiónVisión.html">Acerca de</a></li>
+      <li><a href="Contactanos.html">Contacto</a></li>
+      <li><a href="https://wa.me/529542073313" target="_blank" class="cta">¡Agendar!</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Compra, renta o invierte con confianza</h1>
+    <div class="search-box">
+      <input type="text" placeholder="Buscar propiedades...">
+      <button onclick="window.location.href='Catálogo.html'">Buscar</button>
+    </div>
+  </section>
+
+
+  <!-- Carrusel de propiedades -->
+  <section class="jersey-carousel-section">
+    <h2 class="carousel-title">MÁS VISTOS</h2>
+    <div class="carousel-wrapper">
+      <div class="carousel" id="jerseyCarousel">
+        <div class="card">
+          <img src="IMAGES/DRON.1.jpg" alt="Negro">
+          <div class="info">
+            <h4>Fraccionamiento Agua Azul</h4>
+            <p>Acapulco - Oax</p>
+            <div class="price">Lotes de 200 m2</div>
+            <button class="boton boton-negro" onclick="window.location.href='AguaAzul.html'">Ver detalles</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="IMAGES/AguaAzul1.jpg" alt="Espinillerasnegras">
+          <div class="info">
+            <h4>Fraccionamiento Agua Azul</h4>
+            <p>Acapulco - Oax</p>
+            <div class="price">Lotes de 200 m2</div>
+            <button class="boton boton-negro" onclick="window.location.href='AguaAzul.html'">Ver detalles</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="IMAGES/AguaAzul2.jpg" alt="Blanco">
+          <div class="info">
+            <h4>Fraccionamiento Agua Azul</h4>
+            <p>Acapulco - Oax</p>
+            <div class="price">Lotes de 200 m2</div>
+            <button class="boton boton-negro" onclick="window.location.href='AguaAzul.html'">Ver detalles</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="IMAGES/AguaAzul4.jpg" alt="Espinileras">
+          <div class="info">
+            <h4>Fraccionamiento Agua Azul</h4>
+            <p>Acapulco - Oax</p>
+            <div class="price">Lotes de 200 m2</div>
+            <button class="boton boton-negro" onclick="window.location.href='AguaAzul.html'">Ver detalles</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="IMAGES/DRON.1.jpg" alt="Espinillerasnegras">
+          <div class="info">
+            <h4>Fraccionamiento Agua Azul</h4>
+            <p>Acapulco - Oax</p>
+            <div class="price">Lotes de 200 m2</div>
+            <button class="boton boton-negro" onclick="window.location.href='AguaAzul.html'">Ver detalles</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="IMAGES/AguaAzul5.jpg" alt="Liverpool">
+          <div class="info">
+            <h4>Fraccionamiento Agua Azul</h4>
+            <p>Acapulco - Oax</p>
+            <div class="price">Lotes de 200 m2</div>
+            <button class="boton boton-negro" onclick="window.location.href='AguaAzul.html'">Ver detalles</button>
+          </div>
+        </div>
+      </div>
+      <!-- Flechas -->
+      <button class="btn btn-left" onclick="scrollJerseyCarousel(-1)">◀</button>
+      <button class="btn btn-right" onclick="scrollJerseyCarousel(1)">▶</button>
+      <!-- Scrollbar -->
+      <div class="custom-scrollbar" id="customScrollbar">
+        <div class="custom-thumb" id="customThumb"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo-contact">
+        <h2><img src="IMAGES/Logo1PNG.png" alt="Logo 1" class="logo1"></h2>
+        <p><strong>Encuéntranos en</strong></p>
+        <p>📞 9542073313</p>
+        <p>Av. 5 de mayo, colonia Linda Vista <br> Río Grande, Oax.</p>
+      </div>
+      <div class="footer-links">
+        <h4>¿Qué estás buscando?</h4>
+        <ul>
+          <li><a href="Catálogo1.html#terrenos">Terrenos</a></li>
+          <li><a href="Catálogo1.html#departamentos">Departamentos</a></li>
+          <li><a href="Catálogo1.html#casas">Casas</a></li>
+          <li><a href="Catálogo1.html#oficinas">Oficinas</a></li>
+          <li><a href="Catálogo1.html#locales">Locales</a></li>
+          <li><a href="Catálogo1.html#condominios">Casas-Condominio</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h4>Síguenos en nuestras redes sociales</h4>
+        <div class="social-icons">
+         <a href="https://www.facebook.com/share/1D3nEcScGE/?mibextid=wwXIfr"><img src="IMAGES/FB8.png" alt="Facebook" /></a>
+          <a href="https://www.instagram.com/negocios_inmobiliarios_rm?igsh=cWZvZmlqazAwaXVi&utm_source=qr"><img src="IMAGES/IG3.png" alt="Instagram" /></a>
+          <a href="https://www.tiktok.com/@rm.negocios.inmob?_t=ZS-8zNEIEfUEcr&_r=1"><img src="IMAGES/TT2.png" alt="TikTok" /></a>
+          <a href="https://www.youtube.com/channel/UCiDX-MfzpxyupejX9U5_C4g"><img src="IMAGES/YT4.png" alt="YouTube" /></a>
+        </div>
+        <p>Asociados con:</p>
+        <img src="IMAGES/Logo1.png" alt="AMPI México" class="ampi-logo" />
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 R & M. Todos los derechos reservados.</p>
+      <p>Software Inmobiliario</p>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+    hamburger.addEventListener('click', () => { menu.classList.toggle('active'); });
+
+    // Carrusel JS
+    const carousel = document.getElementById("jerseyCarousel");
+    const thumb = document.getElementById("customThumb");
+    const scrollbar = document.getElementById("customScrollbar");
+
+    function scrollJerseyCarousel(direction) {
+      const scrollAmount = 300;
+      carousel.scrollBy({ left: direction * scrollAmount, behavior: "smooth" });
+    }
+
+    carousel.addEventListener("scroll", () => {
+      const ratio = carousel.scrollLeft / (carousel.scrollWidth - carousel.clientWidth);
+      const maxThumbLeft = scrollbar.clientWidth - thumb.clientWidth;
+      thumb.style.left = `${ratio * maxThumbLeft}px`;
+    });
+
+    scrollbar.addEventListener("click", (e) => {
+      const rect = scrollbar.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const ratio = clickX / scrollbar.clientWidth;
+      carousel.scrollLeft = ratio * (carousel.scrollWidth - carousel.clientWidth);
+    });
+  </script>
+
+</body>
+</html>
